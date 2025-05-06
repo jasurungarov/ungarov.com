@@ -52,14 +52,14 @@ const Navbar = () => {
         ))}
       </div>
       
-      <div className="md:hidden flex justify-center ml-14 mr-5 bg-[#1a1a1a] rounded-full p-1.5 overflow-x-auto no-scrollbar shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+      <div className="md:hidden flex bg-[#1a1a1a] rounded-full p-1.5 overflow-x-auto no-scrollbar shadow-[0_0_10px_rgba(255,0,0,0.3)]">
         {navItems.map((item) => (
           <Link
             key={item.path}
             href={item.path}
             className={`px-2 py-2 rounded-full text-sm whitespace-nowrap ${
               pathname === item.path
-                ? "bg-[#252525] text-white justify-center"
+                ? "bg-[#252525] text-white"
                 : "text-gray-400 hover:text-white transition-colors"
             }`}
           >
