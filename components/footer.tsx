@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
       <div className="md:hidden">
-  <div className="fixed z-10 w-full bg-[#1a1a1a] bottom-5 rounded-2xl p-1.5 shadow-[0_0_10px_rgba(255,0,0,0.3)] overflow-x-auto no-scrollbar">
+  <div className="fixed z-10 m-5 bg-[#1a1a1a] bottom-0.5 rounded-2xl p-1.5 shadow-[0_0_10px_rgba(255,0,0,0.3)] overflow-x-auto no-scrollbar">
     <div className="flex justify-around">
       {navItems.map((item) => (
         <Link
