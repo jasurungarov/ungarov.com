@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Sidebar from '@/components/sidebar';
 import Navbar from '@/components/navbar';
 import MobileSidebar from '@/components/mobile-sidebar';
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,9 +33,11 @@ export default function RootLayout({
             <div className="flex flex-col md:flex-row">
               <Sidebar />
               <MobileSidebar />
-              <div className="flex-1 md:ml-[300px] p-4">
+              <div className="pb-[80px] flex-1 md:ml-[300px] p-4">
                 <Navbar />
-                <main className="mt-4 rounded-2xl shadow-[0_0_50px_rgba(255,0,0,0.3)]">{children}</main>
+                <main className="mt-4 rounded-2xl shadow-[0_0_50px_rgba(255,0,0,0.3)]">{children}
+                </main>
+                <Footer/>
               </div>
             </div>
           </div>

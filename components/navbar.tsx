@@ -35,29 +35,13 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="flex justify-between items-center ">
+    <nav className="flex justify-between items-center">
       <div className="hidden md:flex bg-[#1a1a1a] rounded-full p-1.5 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
         {navItems.map((item) => (
           <Link
             key={item.path}
             href={item.path}
             className={`px-4 py-2 rounded-full text-sm ${
-              pathname === item.path
-                ? "bg-[#252525] text-white"
-                : "text-gray-400 hover:text-white transition-colors"
-            }`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
-      
-      <div className="md:hidden flex bg-[#1a1a1a] rounded-full p-1.5 overflow-x-auto no-scrollbar shadow-[0_0_10px_rgba(255,0,0,0.3)]">
-        {navItems.map((item) => (
-          <Link
-            key={item.path}
-            href={item.path}
-            className={`px-2 py-2 rounded-full text-sm whitespace-nowrap ${
               pathname === item.path
                 ? "bg-[#252525] text-white"
                 : "text-gray-400 hover:text-white transition-colors"
@@ -78,7 +62,7 @@ const Navbar = () => {
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button> */}
 
-        <div className="relative group">
+        <div className="relative group ml-12">
           <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
             <Globe size={18} />
             <span className="text-sm">{language.toUpperCase()}</span>
