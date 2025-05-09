@@ -33,16 +33,17 @@ const Footer = () => {
     <div className="flex justify-around">
       {navItems.map((item) => (
         <Link
-          key={item.path}
-          href={item.path}
-          className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
-            pathname === item.path
-              ? "bg-[#252525] text-white"
-              : "text-gray-400 hover:text-white transition-colors"
-          }`}
-        >
-          {item.label}
-        </Link>
+  key={item.path}
+  href={item.path}
+  className={`px-4 py-2 rounded-full text-xs sm:text-sm md:text-base whitespace-nowrap ${
+    pathname === item.path
+      ? "bg-[#252525] text-white"
+      : "text-gray-400 hover:text-white transition-colors"
+  }`}
+>
+  {item.label}
+</Link>
+
       ))}
     </div>
   </div>
