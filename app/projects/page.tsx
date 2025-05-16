@@ -55,7 +55,7 @@ export default function Projects() {
         <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
       </div>
       
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-8 ml-3 mr-3">
         <div className="flex bg-[#252525] rounded-full p-1.5 shadow-[0_0_10px_rgba(0,0,0)]">
           {categories.map((category) => (
             <button
