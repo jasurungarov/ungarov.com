@@ -12,6 +12,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Jasur Ungarov | Software Engineer',
   description: 'Personal portfolio and resume of Jasur Ungarov, a software engineer specializing in web development.',
+  icons: { icon: '/pngwing.com (3).png'},
 };
 
 export default function RootLayout({
