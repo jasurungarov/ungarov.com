@@ -61,7 +61,7 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm md:text-base transition-colors  ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm md:text-base whitespace-nowrap transition-colors  ${
                 activeCategory === category
                   ? "bg-[#333] text-white"
                   : "text-gray-400 hover:text-white"
