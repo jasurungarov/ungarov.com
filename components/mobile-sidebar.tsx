@@ -145,13 +145,13 @@ export default function MobileSidebar() {
               >
                 Projects
               </Link>
-              <Link
+              {/* <Link
                 href="/blog"
                 onClick={() => setIsOpen(false)}
                 className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
               >
                 Blog
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}

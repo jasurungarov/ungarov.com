@@ -7,10 +7,10 @@ import Link from "next/link";
 const projects = [
   {
     id: 1,
-    title: "SpeedFix Plumbing Website",
-    description: "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
-    image: "https://images.pexels.com/photos/8486972/pexels-photo-8486972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["JavaScript", "React", "Scss"],
+    title: "Sammi School Website",
+    description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
+    image: "https://images.pexels.com/photos/247819/pexels-photo-247819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    technologies: ["TypeScript", "React", "MongoDB"],
     category: "React",
   },
   {
@@ -39,7 +39,7 @@ const projects = [
   },
 ];
 
-const categories = ["All", "React", "JavaScript", "Node.js"];
+const categories = ["All", "React", "JavaScript", "Node.js", "TypeScript"];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");

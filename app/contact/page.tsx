@@ -1,43 +1,58 @@
 "use client";
 
+import { z } from "zod";
 import { useState } from "react";
 import { Github as GitHub, Linkedin, MessageCircle, Send } from "lucide-react";
 import Link from "next/link";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { contactSchema } from '@/lib/validation'
+import { toast } from 'sonner'
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      
-      // Reset success message after some time
-      setTimeout(() => {
-        setFormSubmitted(false);
-      }, 5000);
-    }, 1500);
-  };
-  
+function Contact() {
+	const [isLoading, setIsLoading] = useState(false)
+	// const t = useTranslate()
+
+	const form = useForm<z.infer<typeof contactSchema>>({
+		resolver: zodResolver(contactSchema),
+		defaultValues: {
+			email: '',
+			message: '',
+			name: '',
+		},
+	})
+
+	function onSubmit(values: z.infer<typeof contactSchema>) {
+		setIsLoading(true)
+		const telegramBotId = process.env.NEXT_PUBLIC_TETELGRAM_BOT_API!
+		const telegramChatId = process.env.NEXT_PUBLIC_TETELGRAM_CHAT_ID!
+
+		const promise = fetch(
+			`https://api.telegram.org/bot${telegramBotId}/sendMessage`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'cache-control': 'no-cache',
+				},
+				body: JSON.stringify({
+					chat_id: telegramChatId,
+					text: `Name: ${values.name}:
+Email: ${values.email}:
+Message: ${values.message}`,
+				}),
+			}
+		)
+			.then(() => form.reset())
+			.finally(() => setIsLoading(false))
+
+		toast.promise(promise, {
+			loading:('loading'),
+			success:('successfully'),
+			error:('error'),
+		})
+	}
+
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">
       <div className="flex items-center gap-3 mb-8">
@@ -72,7 +87,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <p>+996707067776</p>
+                  <p>+996 707 067 776</p>
                 </div>
               </div>
             </div>
@@ -120,72 +135,74 @@ export default function Contact() {
         <div className="bg-[#252525] p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
           <h2 className="text-xl font-bold mb-4">Send Message</h2>
           
-          {formSubmitted ? (
-            <div className="bg-emerald-900/30 border border-emerald-500 text-emerald-300 p-4 rounded-lg animate-pulse">
-              Thanks for your message! I`ll get back to you soon.
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                {...form.register("name")}
+                disabled={isLoading}
+                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
+                placeholder="John Doe"
+              />
+              {form.formState.errors.name && (
+                <p className="text-red-500 text-xs mt-1">{form.formState.errors.name.message}</p>
+              )}
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
-                  placeholder="John Doe"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
-                  placeholder="example@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
-                  placeholder="Your message here..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 rounded-lg font-medium transition-all ${
-                  isSubmitting 
-                    ? "bg-gray-600 cursor-not-allowed" 
-                    : "bg-gradient-to-r bg-emerald-500  hover:opacity-90"
-                }`}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </form>
-          )}
+            
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                {...form.register("email")}
+                disabled={isLoading}
+                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
+                placeholder="example@email.com"
+              />
+              {form.formState.errors.email && (
+                <p className="text-red-500 text-xs mt-1">{form.formState.errors.email.message}</p>
+              )}
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows={5}
+                {...form.register("message")}
+                disabled={isLoading}
+                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
+                placeholder="Your message here..."
+              ></textarea>
+              {form.formState.errors.message && (
+                <p className="text-red-500 text-xs mt-1">{form.formState.errors.message.message}</p>
+              )}
+            </div>
+            
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full py-3 rounded-lg font-medium transition-all ${
+                isLoading 
+                  ? "bg-gray-600 cursor-not-allowed" 
+                  : "bg-gradient-to-r bg-emerald-500  hover:opacity-90"
+              }`}
+            >
+              {isLoading ? "Sending..." : "Send Message"}
+            </button>
+          </form>
         </div>
       </div>
     </div>
   );
 }
+
+export default Contact;

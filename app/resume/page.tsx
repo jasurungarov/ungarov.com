@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Resume() {
   return (
@@ -53,7 +53,7 @@ export default function Resume() {
                 <span>2022 - Present, Complated in 2026</span>
               </div>
               <p className="text-gray-300">
-                Pursuing a Bachelor`s degree in Computer Science at Anglia Ruskin University, Cambridge. The
+                Pursuing a Bachelor`s degree in Computer Science at Kyrgyz State University named after Ishenaly Arabaev, Bishkek. The
                 course covers software engineering, data structures, algorithms, databases, networks, and
                 cybersecurity. Emphasis is placed on practical problem solving, real-world application of code, and
                 collaborative projects. Currently developing skills in JavaScript, Python, and system design while
@@ -69,9 +69,7 @@ export default function Resume() {
                 <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs">1yr</span>
               </div>
               <p className="text-gray-300">
-                Completed an intensive program in modern web development and IT fundamentals in Uzbekistan
-                Tashkent. Gained hands-on experience by building multiple projects from scratch, collaborating in
-                teams, and mastering front-end technologies. Specialized in React.js and JavaScript development
+                Completed an intensive program in modern web development and IT fundamentals. Gained hands-on experience by building multiple projects from scratch, collaborating in teams, and mastering front-end technologies. Specialized in React.js and JavaScript development
                 while learning best practices for creating responsive and accessible web applications.
               </p>
             </div>
