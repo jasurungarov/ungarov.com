@@ -11,7 +11,7 @@ export default function Resume() {
         
         <div className="hidden md:flex">
         <Link 
-          href="/resume.pdf" 
+          href="/resume/soon" 
           className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-full shadow-[0_0_10px_rgba(0,0,0)]"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -24,7 +24,7 @@ export default function Resume() {
 
         <div className="md:hidden">
         <Link 
-          href="/resume.pdf" 
+          href="/resume/soon" 
           className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-2 py-2 text-xs rounded-full shadow-[0_0_10px_rgba(0,0,0)]"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">

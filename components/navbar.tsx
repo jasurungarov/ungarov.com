@@ -26,8 +26,8 @@ const Navbar = () => {
 
   const languages = [
     { code: "en", label: "EN" },
-    { code: "ru", label: "RU" },
-    { code: "uz", label: "UZ" },
+    // { code: "ru", label: "RU" },
+    // { code: "uz", label: "UZ" },
   ];
 
   if (!mounted) {

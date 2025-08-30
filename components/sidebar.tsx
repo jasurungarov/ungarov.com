@@ -26,7 +26,7 @@ const Sidebar = () => {
         </div>
         
         <Link 
-          href="/resume.pdf" 
+          href="/resume/soon" 
           className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-md mt-4 text-sm"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -46,7 +46,7 @@ const Sidebar = () => {
           </div>
           <div>
             <p className="text-xs text-gray-400">Email</p>
-            <p className="text-sm">jasurungarov@gmail.com</p>
+            <p className="text-sm">jasurungarov17@gmail.com</p>
           </div>
         </div>
         
@@ -70,7 +70,6 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      
       <div className="border-t border-gray-700 my-6"></div>
       
       <div className="flex justify-center gap-3">

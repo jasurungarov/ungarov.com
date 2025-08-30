@@ -6,11 +6,11 @@ import Link from "next/link";
 
 const projects = [
   {
-    id: 1,
+    id: "1",
     title: "Sammi School Website",
     description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
     image: "https://images.pexels.com/photos/247819/pexels-photo-247819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["TypeScript", "React", "MongoDB"],
+    technologies: ["TypeScript", "React",  "Node.js", "MongoDB"],
     category: "React",
   },
   {
@@ -39,7 +39,7 @@ const projects = [
   },
 ];
 
-const categories = ["All", "React", "JavaScript", "Node.js", "TypeScript"];
+const categories = ["React", "JavaScript", "Node.js", "TypeScript"];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -94,8 +94,13 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <Link 
-                href={`/projects/${project.id}`} 
+              <Link
+              
+              //linkli saytda qolaniladi
+              //href={String(project.id)}
+                href="/projects/soon"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat bg-left-bottom pb-1 transition-all duration-300 group-hover:bg-[length:100%_2px]"
               >
                 View Project

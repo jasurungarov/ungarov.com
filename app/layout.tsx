@@ -6,6 +6,8 @@ import Sidebar from '@/components/sidebar';
 import Navbar from '@/components/navbar';
 import MobileSidebar from '@/components/mobile-sidebar';
 import Footer from '@/components/footer';
+import { Toaster } from "sonner"
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -38,6 +40,7 @@ export default function RootLayout({
                 <Navbar />
                 <main className="mt-4 rounded-2xl shadow-[0_0_50px_rgba(255,0,0,0.3)]">{children}
                 </main>
+                <Toaster richColors  position="top-center" />
                 <Footer/>
               </div>
             </div>
