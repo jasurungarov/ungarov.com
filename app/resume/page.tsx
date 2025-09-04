@@ -63,10 +63,10 @@ export default function Resume() {
             
             <div className="relative pl-8 border-l border-gray-700">
               <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
-              <h3 className="text-xl font-bold">Sammi Academy</h3>
+              <h3 className="text-xl font-bold">Sammi Academy (Online Course)</h3>
               <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                <span>2023 - 2024</span>
-                <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs">1yr</span>
+                <span>2023 – Present</span>
+                {/* <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs"></span> */}
               </div>
               <p className="text-gray-300">
                 Completed an intensive program in modern web development and IT fundamentals. Gained hands-on experience by building multiple projects from scratch, collaborating in teams, and mastering front-end technologies. Specialized in React.js and JavaScript development
@@ -90,7 +90,8 @@ export default function Resume() {
               <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-purple-500"></div>
               <h3 className="text-xl font-bold">Freelance Web Developer</h3>
               <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                <span>2023 - Present</span>
+                <span>2024 - Present</span>
+                {/* <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs">1yr</span> */}
               </div>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>Developed responsive websites for small businesses and entrepreneurs</li>
@@ -100,11 +101,11 @@ export default function Resume() {
               </ul>
             </div>
             
-            {/* <div className="relative pl-8 border-l border-gray-700">
+            <div className="relative pl-8 border-l border-gray-700">
               <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-amber-500"></div>
-              <h3 className="text-xl font-bold">Junior Web Developer</h3>
+              <h3 className="text-xl font-bold">Junior Web Developer (Personal Projects)</h3>
               <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                <span>2022 - 2023</span>
+                <span>2022 – 2023</span>
                 <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs">1yr</span>
               </div>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -113,7 +114,7 @@ export default function Resume() {
                 <li>Collaborated with the team on agile development processes</li>
                 <li>Gained experience with version control systems and deployment pipelines</li>
               </ul>
-            </div> */}
+            </div>
           </div>
         </section>
         

@@ -6,15 +6,15 @@ import Link from "next/link";
 
 const projects = [
   {
-    id: "1",
+    id: "./soon",
     title: "Sammi School Website",
     description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
-    image: "https://images.pexels.com/photos/247819/pexels-photo-247819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "/sammi.jpg",
     technologies: ["TypeScript", "React",  "Node.js", "MongoDB"],
     category: "React",
   },
   {
-    id: 2,
+    id: "./soon",
     title: "E-Commerce Platform",
     description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
     image: "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -22,19 +22,19 @@ const projects = [
     category: "All",
   },
   {
-    id: 3,
-    title: "Task Management App",
-    description: "A productive task management application with drag-and-drop functionality and team collaboration features.",
-    image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["JavaScript", "Node.js", "MongoDB"],
+    id: "https://al-muamalat-three.vercel.app/",
+    title: "Al-Muamalat",
+    description: "A platform focused on Islamic finance, education, international collaboration, and Shariah compliance. The clean design organizes services into clear sections, making it easy for users to navigate and access key offerings.",
+    image: "/finance.jpg",
+    technologies: ["React", "TypeScript","JavaScript", "MongoDB", "TailwindCss"],
     category: "JavaScript",
   },
   {
-    id: 4,
-    title: "Weather Dashboard",
-    description: "Real-time weather application with forecast data, location search, and interactive maps.",
-    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["React", "Node.js"],
+    id: "https://library-beta-weld.vercel.app/",
+    title: "Virtual Library",
+    description: "A digital library dedicated to bringing literature to readers everywhere. Our curated collection covers multiple genres and topics, providing knowledge at your fingertips.",
+    image: "/library.jpg",
+    technologies: ["React", "TypeScript", "JavaScript", "TailwindCss"],
     category: "React",
   },
 ];
@@ -96,9 +96,8 @@ export default function Projects() {
               </div>
               <Link
               
-              //linkli saytda qolaniladi
-              //href={String(project.id)}
-                href="/projects/soon"
+              
+              href={String(project.id).startsWith("http") ? project.id : "/projects/soon"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat bg-left-bottom pb-1 transition-all duration-300 group-hover:bg-[length:100%_2px]"

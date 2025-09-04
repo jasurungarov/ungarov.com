@@ -52,7 +52,8 @@ const Navbar = () => {
         ))}
       </div>
       
-      <div className="flex gap-2">
+        
+      <div className="flex gap-2 justify-end w-full md:justify-end">
 
         {/* Mode toggle */}
         {/* <button
@@ -61,27 +62,27 @@ const Navbar = () => {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button> */}
+  <div className="relative group">
+    <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
+      <Globe size={18} />
+      <span className="text-sm">{language.toUpperCase()}</span>
+    </button>
+    <div className="absolute right-0 mt-2 py-2 w-24 bg-[#1a1a1a] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+      {languages.map((lang) => (
+        <button
+          key={lang.code}
+          onClick={() => setLanguage(lang.code)}
+          className={`w-full px-4 py-2 text-left text-sm hover:bg-[#252525] transition-colors ${
+            language === lang.code ? "text-white" : "text-gray-400"
+          }`}
+        >
+          {lang.label}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
-        <div className="relative group ml-12">
-          <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
-            <Globe size={18} />
-            <span className="text-sm">{language.toUpperCase()}</span>
-          </button>
-          <div className="absolute right-0 mt-2 py-2 w-24 bg-[#1a1a1a] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => setLanguage(lang.code)}
-                className={`w-full px-4 py-2 text-left text-sm hover:bg-[#252525] transition-colors ${
-                  language === lang.code ? "text-white" : "text-gray-400"
-                }`}
-              >
-                {lang.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
     </nav>
   );
 };
