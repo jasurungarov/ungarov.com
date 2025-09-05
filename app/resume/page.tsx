@@ -140,7 +140,7 @@ export default function Resume() {
               
               <h3 className="text-xl font-bold mb-3 mt-6">Frameworks & Libraries</h3>
               <div className="flex flex-wrap gap-2">
-                {["React.js", "Next.js", "Node.js", "Tailwind CSS", "Redux", "GraphQL"].map((skill) => (
+                {["React.js", "Next.js", "Node.js", "Tailwind CSS", "Redux", "VeuJs"].map((skill) => (
                   <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>
@@ -160,7 +160,7 @@ export default function Resume() {
               
               <h3 className="text-xl font-bold mb-3 mt-6">Databases</h3>
               <div className="flex flex-wrap gap-2">
-                {["MongoDB", "PostgreSQL", "MySQL", "Firebase"].map((skill) => (
+                {["MongoDB", "MySQL", "Firebase"].map((skill) => (
                   <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>

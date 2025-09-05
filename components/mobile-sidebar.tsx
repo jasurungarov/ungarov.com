@@ -25,9 +25,9 @@ export default function MobileSidebar() {
         className="fixed top-4 left-4 z-50 bg-[#252525] p-2 rounded-md shadow-[0_0_10px_rgba(255,0,0,0.3)]">
         <Menu size={24} />
       </button>
-      <div className='fixed top-3 left-14 z-50 p-2 rounded-md animate-pulse'>
-  <h3 className="flex items-center gap-1 rounded-xl bg-emerald-700 text-xs text-white px-2 py-1 ">
-    <FaRegHandPointLeft size={10} />
+      <div className='fixed top-4 left-16 z-50 p-2 rounded-8xl animate-pulse'>
+  <h3 className="flex items-center gap-1 rounded-xl bg-emerald-500 text-base text-white px-2 py-0">
+    <FaRegHandPointLeft size={13} />
     I&apos;m here
   </h3>
 </div>

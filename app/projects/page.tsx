@@ -9,7 +9,7 @@ const projects = [
     id: "./soon",
     title: "Sammi School Website",
     description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
-    image: "/sammi.jpg",
+    image: "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg",
     technologies: ["TypeScript", "React",  "Node.js", "MongoDB"],
     category: "React",
   },
@@ -25,7 +25,7 @@ const projects = [
     id: "https://al-muamalat-three.vercel.app/",
     title: "Al-Muamalat",
     description: "A platform focused on Islamic finance, education, international collaboration, and Shariah compliance. The clean design organizes services into clear sections, making it easy for users to navigate and access key offerings.",
-    image: "/finance.jpg",
+    image: "https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg",
     technologies: ["React", "TypeScript","JavaScript", "MongoDB", "TailwindCss"],
     category: "JavaScript",
   },
@@ -33,7 +33,7 @@ const projects = [
     id: "https://library-beta-weld.vercel.app/",
     title: "Virtual Library",
     description: "A digital library dedicated to bringing literature to readers everywhere. Our curated collection covers multiple genres and topics, providing knowledge at your fingertips.",
-    image: "/library.jpg",
+    image: "https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg",
     technologies: ["React", "TypeScript", "JavaScript", "TailwindCss"],
     category: "React",
   },
@@ -75,7 +75,8 @@ export default function Projects() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="group bg-[#252525] rounded-xl overflow-hidden hover:transform hover:scale-[1.01] transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0)]">
+          <div key={project.id} className="group bg-[#252525] rounded-xl overflow-hidden transform hover:scale-105
+            transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0)]">
             <div className="relative h-48 overflow-hidden">
               <Image
                 src={project.image}
