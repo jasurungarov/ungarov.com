@@ -14,11 +14,11 @@ const projects = [
     category: "React",
   },
   {
-    id: "./soon",
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
-    image: "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    id: "https://www.interact.uz/",
+    title: "InTeract Web Platform",
+    description: "InTeract is a next-generation real-time chat platform built with Next.js and MongoDB by Jasur Ungarov. Designed for speed, reliability, and seamless communication across the web.",
+    image: "/interact.png",
+    technologies: ["React", "TypeScript", "JavaScript", "Node.js", "MongoDB", "TailwindCss"],
     category: "All",
   },
   {
@@ -38,6 +38,7 @@ const projects = [
     category: "React",
   },
 ];
+
 
 const categories = ["React", "JavaScript", "Node.js", "TypeScript"];
 
@@ -61,9 +62,9 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm md:text-base whitespace-nowrap transition-colors  ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm md:text-base whitespace-nowrap transition-colors   ${
                 activeCategory === category
-                  ? "bg-[#333] text-white"
+                  ? "bg-[#333] text-white shadow-[0_0_10px_rgba(0,0,0)]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -90,7 +91,7 @@ export default function Projects() {
               <p className="text-gray-400 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="bg-[#333] px-2 py-1 rounded text-xs">
+                  <span key={tech} className="bg-[#333] px-2 py-1 rounded text-xs shadow-[0_0_2px_rgba(0,0,0)]">
                     {tech}
                   </span>
                 ))}

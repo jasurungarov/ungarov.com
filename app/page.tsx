@@ -9,6 +9,7 @@ export default function Home() {
           <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
         </div>
         
+
         <div className="space-y-4 text-gray-300">
           <p>
             I`m a passionate software engineer originally from Uzbekistan, currently based in Bishkek,

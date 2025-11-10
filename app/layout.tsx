@@ -15,6 +15,19 @@ export const metadata: Metadata = {
   title: 'Jasur Ungarov | Software Engineer',
   description: 'Personal portfolio and resume of Jasur Ungarov, a software engineer specializing in web development.',
   icons: { icon: '/pngwing.com (3).png'},
+  openGraph: {
+		description:
+			'Personal portfolio and resume of Jasur Ungarov, a software engineer specializing in web development.',
+		type: 'website',
+		url: 'https://ungarov.uz',
+		locale: 'en_US',
+		images: ['/photo_2025-05-06_08-15-39.jpg'],
+		countryName: 'Kyrgyzstan',
+		siteName: 'Jasur Ungarov Portfolio',
+		emails: 'jasurungarov17@gmail.com',
+	},
+	keywords:
+		'Jasur Ungarov, Ungarov web, Ungarov Jasur, Jasur web, Kyrgyzstan tech, web development, software engineer portfolio',
 };
 
 export default function RootLayout({
