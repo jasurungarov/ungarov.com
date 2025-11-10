@@ -1,8 +1,8 @@
 "use client";
 
 import { z } from "zod";
-import { useState } from "react";
-import { Github as GitHub, Linkedin, MessageCircle, Send } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Github as GitHub, Linkedin, Loader2, MessageCircle, Send } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 
 function Contact() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -48,6 +49,25 @@ function Contact() {
       error: "Failed to send message. Please try again.",
     });
   };
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsPageLoading(false); 
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    if (isPageLoading) {
+      return (
+        <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
+          <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
+          <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
+            Loading...
+          </span>
+        </div>
+      );
+    }
 
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">

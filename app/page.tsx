@@ -1,15 +1,38 @@
-import { MessageSquareCode, Search } from "lucide-react";
+"use client";
+
+import { Loader2, MessageSquareCode, Search } from "lucide-react";
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false); 
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    if (isLoading) {
+      return (
+        <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
+          <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
+          <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
+            Loading...
+          </span>
+        </div>
+      );
+    }
+
   return (
-    <div className="p-6 bg-[#1a1a1a] rounded-2xl">
+      <div className="p-6 bg-[#1a1a1a] rounded-2xl">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-3">
           <h1 className="text-3xl font-bold">About Me</h1>
           <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
         </div>
-        
-
+      
         <div className="space-y-4 text-gray-300">
           <p>
             I`m a passionate software engineer originally from Uzbekistan, currently based in Bishkek,

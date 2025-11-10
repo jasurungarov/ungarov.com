@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Globe, Sun, Moon } from "lucide-react";
+import { Globe, Sun, Moon, Loader2 } from "lucide-react";
 
 const Navbar = () => {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [language, setLanguage] = useState("en");
-
+  
   useEffect(() => {
     setMounted(true);
   }, []);

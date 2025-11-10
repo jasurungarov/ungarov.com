@@ -1,6 +1,47 @@
+"use client";
+
+import { Loader2 } from 'lucide-react'
 import Link from "next/link"
+import { useEffect, useState } from 'react'
 
 export default function Resume() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false); 
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    if (isLoading) {
+      return (
+        <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
+          <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
+          <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
+            Loading...
+          </span>
+        </div>
+      );
+    }
+    
+    const handleDownload = () => {
+    setIsLoading(true);
+    const url = "/jasur_ungarov-cv.pdf";
+
+    // Faylni yuklab olish
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "jasur_ungarov-cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Faylni yangi oynada ochish
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">
       <div className="flex items-center justify-between mb-8">
@@ -10,16 +51,17 @@ export default function Resume() {
         </div>
         
         <div className="hidden md:flex">
-        <Link 
-          href="/resume/soon" 
-          className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-full shadow-[0_0_10px_rgba(0,0,0)]"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-          </svg>
-          Download CV
-        </Link>
+          <button
+            onClick={handleDownload}
+            disabled={isLoading}
+            className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-full shadow-[0_0_10px_rgba(0,0,0)] relative overflow-hidden"
+          >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                <span>Download CV</span>
+          </button>
         </div>
 
         <div className="md:hidden">

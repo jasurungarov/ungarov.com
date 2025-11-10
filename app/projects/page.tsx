@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import {  useEffect, useState  } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Loader2 } from 'lucide-react'
 
 const projects = [
-  {
-    id: "./soon",
-    title: "Sammi School Website",
-    description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
-    image: "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg",
-    technologies: ["TypeScript", "React",  "Node.js", "MongoDB"],
-    category: "React",
-  },
+  // {
+  //   id: "./soon",
+  //   title: "Sammi School Website",
+  //   description: "Online School Website (Next.js): This is a fully functional online school platform built using Next.js, React, and TypeScript.",
+  //   image: "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg",
+  //   technologies: ["TypeScript", "React",  "Node.js", "MongoDB"],
+  //   category: "React",
+  // },
   {
     id: "https://www.interact.uz/",
     title: "InTeract Web Platform",
@@ -44,10 +45,30 @@ const categories = ["React", "JavaScript", "Node.js", "TypeScript"];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
-  
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(project => project.category === activeCategory || project.technologies.includes(activeCategory));
+
+  const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false); 
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    if (isLoading) {
+      return (
+        <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
+          <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
+          <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
+            Loading...
+          </span>
+        </div>
+      );
+    }
 
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">
@@ -79,11 +100,20 @@ export default function Projects() {
           <div key={project.id} className="group bg-[#252525] rounded-xl overflow-hidden transform hover:scale-105
             transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0)]">
             <div className="relative h-48 overflow-hidden">
+              {isLoading && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10 backdrop-blur-sm">
+                <Loader2 className="animate-spin text-sky-400 w-10 h-10 drop-shadow-[0_0_10px_rgba(56,189,248,0.7)]" />
+              </div>
+            )}
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                priority
+                className={`object-cover transition-transform duration-500 group-hover:scale-110 ${
+                  isLoading ? "opacity-0" : "opacity-100"
+                }`}
+                onLoadingComplete={() => setIsLoading(false)}
               />
             </div>
             <div className="p-5">
