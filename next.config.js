@@ -1,5 +1,14 @@
 // module.exports = nextConfig;
 /** @type {import('next').NextConfig} */
+
+const { i18n } = require('./next-i18next.config');
+
+module.exports = {
+  reactStrictMode: true,
+  i18n,
+};
+
+
 const nextConfig = {
   // Statik eksport qilish uchun (SSG) — SEO uchun yaxshi
   output: 'export',

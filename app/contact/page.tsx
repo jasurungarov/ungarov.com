@@ -8,10 +8,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "@/lib/validation";
 import { toast } from "sonner";
+import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [isPageLoading, setIsPageLoading] = useState(true);
+  const { t } = useTranslation();
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -44,9 +47,9 @@ function Contact() {
       .finally(() => setIsLoading(false));
 
     toast.promise(promise, {
-      loading: "Sending...",
-      success: "Message sent successfully!",
-      error: "Failed to send message. Please try again.",
+      loading: t('messagesend'),
+      success: t('messagesent'),
+      error: t('sendfail'),
     });
   };
   
@@ -63,7 +66,7 @@ function Contact() {
         <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
           <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
           <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
-            Loading...
+            {t('loading')}
           </span>
         </div>
       );
@@ -72,27 +75,24 @@ function Contact() {
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">
       <div className="flex items-center gap-3 mb-8">
-        <h1 className="text-3xl font-bold">Contact Me</h1>
+        <h1 className="text-3xl font-bold">{t('contactme')}</h1>
         <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" />
       </div>
 
-      <p className="text-gray-300 mb-8">
-        Feel free to reach out to me through any of these channels. I&apos;m always open to new
-        opportunities and collaborations.
-      </p>
+      <p className="text-gray-300 mb-8">{t('contactmedescription')}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Contact Info */}
         <div>
           <div className="bg-[#252525] p-6 rounded-xl mb-6 shadow-[0_0_20px_rgba(0,0,0)]">
-            <h2 className="text-xl font-bold mb-4">Contact Information</h2>
+            <h2 className="text-xl font-bold mb-4">{t('contactmeinfo')}</h2>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="bg-[#333] p-2 rounded-md">
                   <Send size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-sm text-gray-400">{t('contactmeemail')}</p>
                   <p>jasurungarov17@gmail.com</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ function Contact() {
                   <MessageCircle size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p>
+                  <p className="text-sm text-gray-400">{t('contactmephone')}</p>
                   <p>+996 707 067 776</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ function Contact() {
 
           {/* Socials */}
           <div className="bg-[#252525] p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
-            <h2 className="text-xl font-bold mb-4">Social Media</h2>
+            <h2 className="text-xl font-bold mb-4">{t('contactmesocials')}</h2>
             <div className="grid grid-cols-2 gap-4">
               <Link href="https://github.com/jasurungarov" className="flex items-center gap-3 bg-[#333] p-3 rounded-lg hover:bg-[#444] transition-colors">
                 <GitHub size={20} />
@@ -138,11 +138,11 @@ function Contact() {
 
         {/* Contact Form */}
         <div className="bg-[#252525] p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
-          <h2 className="text-xl font-bold mb-4">Send Message</h2>
+          <h2 className="text-xl font-bold mb-4">{t('sendmessage')}</h2>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
-                Name
+                {t('name')}
               </label>
               <input
                 type="text"
@@ -150,7 +150,7 @@ function Contact() {
                 {...form.register("name")}
                 disabled={isLoading}
                 className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
-                placeholder="John Doe"
+                placeholder={t('yourname')}
               />
               {form.formState.errors.name && (
                 <p className="text-red-500 text-xs mt-1">{form.formState.errors.name.message}</p>
@@ -159,7 +159,7 @@ function Contact() {
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
-                Email
+                {t('email')}
               </label>
               <input
                 type="email"
@@ -167,7 +167,7 @@ function Contact() {
                 {...form.register("email")}
                 disabled={isLoading}
                 className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
-                placeholder="example@email.com"
+                placeholder={t('youremail')}
               />
               {form.formState.errors.email && (
                 <p className="text-red-500 text-xs mt-1">{form.formState.errors.email.message}</p>
@@ -176,7 +176,7 @@ function Contact() {
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
-                Message
+                {t('message')}
               </label>
               <textarea
                 id="message"
@@ -184,7 +184,7 @@ function Contact() {
                 {...form.register("message")}
                 disabled={isLoading}
                 className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
-                placeholder="Your message here..."
+                placeholder={t('yourmessage')}
               />
               {form.formState.errors.message && (
                 <p className="text-red-500 text-xs mt-1">{form.formState.errors.message.message}</p>
@@ -200,7 +200,7 @@ function Contact() {
                   : "bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90"
               }`}
             >
-              {isLoading ? "Sending..." : "Send Message"}
+              {isLoading ? t('sending') : t('sendMessage')}
             </button>
           </form>
         </div>

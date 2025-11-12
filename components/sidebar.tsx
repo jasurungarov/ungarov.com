@@ -4,9 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Github, Linkedin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Sidebar = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
+  
   const handleDownload = () => {
 
 
@@ -49,12 +52,12 @@ const Sidebar = () => {
             />
           </div>
           <div className="absolute bottom-1 right-1 bg-emerald-500 text-xs text-white px-2 py-1 rounded-full">
-            Open to work
+            {t('opentowork')}
           </div>
         </div>
-        <h1 className="text-xl font-bold mt-2 text-center">Jasur Ungarov</h1>
+        <h1 className="text-xl font-bold mt-2 text-center">{t('Name')}</h1>
         <div className="bg-[#252525] text-sm px-4 py-1 rounded-full mt-2">
-          Software Engineer
+          {t('softwareengineer')}
         </div> 
 
         <button
@@ -66,7 +69,7 @@ const Sidebar = () => {
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                 </svg>
-                <span>Download CV</span>
+                <span>{t('downloadresume')}</span>
           </button>
       </div>
       
@@ -78,7 +81,7 @@ const Sidebar = () => {
             <Mail size={16} />
           </div>
           <div>
-            <p className="text-xs text-gray-400">Email</p>
+            <p className="text-xs text-gray-400">{t('email')}</p>
             <p className="text-sm">jasurungarov17@gmail.com</p>
           </div>
         </div>
@@ -88,7 +91,7 @@ const Sidebar = () => {
             <Phone size={16} />
           </div>
           <div>
-            <p className="text-xs text-gray-400">Phone</p>
+            <p className="text-xs text-gray-400">{t('contactmephone')}</p>
             <p className="text-sm">+996 707 067 776</p>
           </div>
         </div>
@@ -98,8 +101,8 @@ const Sidebar = () => {
             <MapPin size={16} />
           </div>
           <div>
-            <p className="text-xs text-gray-400">Location</p>
-            <p className="text-sm">Bishkek, KG</p>
+            <p className="text-xs text-gray-400">{t('location')}</p>
+            <p className="text-sm">{t('locationvalue')}</p>
           </div>
         </div>
       </div>

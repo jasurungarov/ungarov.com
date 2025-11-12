@@ -4,8 +4,18 @@ import {  useEffect, useState  } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Loader2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { t } from 'i18next'
 
-const projects = [
+
+
+
+const categories = ["React", "JavaScript", "Node.js", "TypeScript"];
+
+export default function Projects() {
+  const { t } = useTranslation();
+
+  const projects = [
   // {
   //   id: "./soon",
   //   title: "Sammi School Website",
@@ -16,34 +26,30 @@ const projects = [
   // },
   {
     id: "https://www.interact.uz/",
-    title: "InTeract Web Platform",
-    description: "InTeract is a next-generation real-time chat platform built with Next.js and MongoDB by Jasur Ungarov. Designed for speed, reliability, and seamless communication across the web.",
+    title: t('projecttitle'),
+    description: t('projectdescription'),
     image: "/interact.png",
     technologies: ["React", "TypeScript", "JavaScript", "Node.js", "MongoDB", "TailwindCss"],
     category: "All",
   },
   {
     id: "https://al-muamalat-three.vercel.app/",
-    title: "Al-Muamalat",
-    description: "A platform focused on Islamic finance, education, international collaboration, and Shariah compliance. The clean design organizes services into clear sections, making it easy for users to navigate and access key offerings.",
+    title:  t('projecttitle2'),
+    description: t('projectdescription2'),
     image: "https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg",
     technologies: ["React", "TypeScript","JavaScript", "MongoDB", "TailwindCss"],
     category: "JavaScript",
   },
   {
     id: "https://library-beta-weld.vercel.app/",
-    title: "Virtual Library",
-    description: "A digital library dedicated to bringing literature to readers everywhere. Our curated collection covers multiple genres and topics, providing knowledge at your fingertips.",
+    title:  t('projecttitle3'),
+    description: t('projectdescription3'),
     image: "https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg",
     technologies: ["React", "TypeScript", "JavaScript", "TailwindCss"],
     category: "React",
   },
 ];
 
-
-const categories = ["React", "JavaScript", "Node.js", "TypeScript"];
-
-export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const filteredProjects = activeCategory === "All" 
     ? projects 
@@ -58,13 +64,14 @@ export default function Projects() {
   
       return () => clearTimeout(timer);
     }, []);
+    
   
     if (isLoading) {
       return (
         <div className="flex flex-col justify-center items-center h-screen rounded-2xl">
           <Loader2 className="animate-spin text-sky-500 w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]" />
           <span className="text-sm text-gray-400 tracking-widest uppercase animate-pulse">
-            Loading...
+            {t('loading')}
           </span>
         </div>
       );
@@ -73,7 +80,7 @@ export default function Projects() {
   return (
     <div className="p-6 bg-[#1a1a1a] rounded-2xl">
       <div className="flex items-center gap-3 mb-8">
-        <h1 className="text-3xl font-bold">Projects</h1>
+        <h1 className="text-3xl font-bold">{t('projectstitle')}</h1>
         <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
       </div>
       
@@ -134,7 +141,7 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat bg-left-bottom pb-1 transition-all duration-300 group-hover:bg-[length:100%_2px]"
               >
-                View Project
+                {t('viewproject')}
               </Link>
             </div>
           </div>

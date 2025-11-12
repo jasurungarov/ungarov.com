@@ -7,6 +7,8 @@ import Navbar from '@/components/navbar';
 import MobileSidebar from '@/components/mobile-sidebar';
 import Footer from '@/components/footer';
 import { Toaster } from "sonner"
+import { languages } from '@/i18n/settings'; // bu faylni quyida yaratamiz
+import "@/i18n"; // bu i18n ni butun dastur uchun faollashtiradi
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -30,13 +32,22 @@ export const metadata: Metadata = {
 		'Jasur Ungarov, Ungarov web, Ungarov Jasur, Jasur web, Kyrgyzstan tech, web development, software engineer portfolio',
 };
 
+
+// ⬇️ Bu qism yangi — ko‘p tillilikni qo‘llash uchun
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
+
 export default function RootLayout({
   children,
+  params: { lng },
 }: {
   children: React.ReactNode;
+  params: { lng: string };
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lng} dir="ltr" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

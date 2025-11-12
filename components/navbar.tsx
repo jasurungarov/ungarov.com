@@ -4,35 +4,43 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Globe, Sun, Moon, Loader2 } from "lucide-react";
+import { Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const pathname = usePathname();
+
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [language, setLanguage] = useState("en");
   
+  const [mounted, setMounted] = useState(false);
+  const [language, setLanguage] = useState(i18n.language || "en");
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const changeLanguage = (lang: string) => {
+    setLanguage(lang);
+    i18n.changeLanguage(lang);
+  };
+
   const navItems = [
-    { label: "About", path: "/" },
-    { label: "Resume", path: "/resume" },
-    { label: "Projects", path: "/projects" },
-    // { label: "Blog", path: "/blog" },
-    { label: "Contact", path: "/contact" },
+    { label: t("about"), path: "/" },
+    { label: t("resume"), path: "/resume" },
+    { label: t("projects"), path: "/projects" },
+    { label: t("contact"), path: "/contact" },
   ];
 
   const languages = [
     { code: "en", label: "EN" },
-    // { code: "ru", label: "RU" },
-    // { code: "uz", label: "UZ" },
+    { code: "ru", label: "RU" },
+    { code: "uz", label: "UZ" },
+    { code: "ar", label: "AR" },
   ];
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <nav className="flex justify-between items-center">
@@ -51,8 +59,7 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-      
-        
+
       <div className="flex gap-2 justify-end w-full md:justify-end">
 
         {/* Mode toggle */}
@@ -62,28 +69,28 @@ const Navbar = () => {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button> */}
-  <div className="relative group">
-    <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
-      <Globe size={18} />
-      <span className="text-sm">{language.toUpperCase()}</span>
-    </button>
 
-    <div className="absolute right-0 mt-2 py-2 w-24 bg-[#1a1a1a] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-      {languages.map((lang) => (
-        <button
-          key={lang.code}
-          onClick={() => setLanguage(lang.code)}
-          className={`w-full px-4 py-2 text-left text-sm hover:bg-[#252525] transition-colors ${
-            language === lang.code ? "text-white" : "text-gray-400"
-          }`}
-        >
-          {lang.label}
+      <div className="relative group">
+        <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
+          <Globe size={18} />
+          <span className="text-sm">{language.toUpperCase()}</span>
         </button>
-      ))}
-    </div>
-  </div>
-</div>
 
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#1a1a1a] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => changeLanguage(lang.code)}
+              className={`w-full px-4 py-2 text-left text-sm hover:bg-[#252525] transition-colors ${
+                language === lang.code ? "text-white" : "text-gray-400"
+              }`}
+            >
+              {lang.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      </div>
     </nav>
   );
 };

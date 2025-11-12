@@ -3,16 +3,34 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Mail, Phone, MapPin, Github, Linkedin, MessageCircle, Send } from "lucide-react";
+import { Menu, X, Mail, Phone, MapPin, Github, Linkedin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { FaRegHandPointLeft } from "react-icons/fa6";
+import { useTranslation } from 'react-i18next'
 
 export default function MobileSidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  
+    const handleDownload = () => {
+    const url = "/jasur_ungarov-cv.pdf";
+
+    // Faylni yuklab olish
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "jasur_ungarov-cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Faylni yangi oynada ochish
+    window.open(url, "_blank");
+  };
 
   if (!mounted) {
     return null;
@@ -22,17 +40,15 @@ export default function MobileSidebar() {
     <div className="md:hidden">
       <button 
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 left-4 z-50 bg-[#252525] p-2 rounded-md shadow-[0_0_10px_rgba(255,0,0,0.3)]">
-        <Menu size={24} />
-      </button>
-      <div className='fixed top-4 left-16 z-50 p-2 rounded-8xl animate-pulse'>
-  <h3 className="flex items-center gap-1 rounded-xl bg-emerald-500 text-base text-white px-2 py-0">
-    <FaRegHandPointLeft size={13} />
-    I&apos;m here
-  </h3>
-</div>
-      
-      
+          className="fixed top-4 left-4 z-50 bg-[#252525] p-2 rounded-md shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+            <Menu size={24} />
+          </button>
+          <div className='fixed top-4 left-16 z-50 p-2 rounded-8xl animate-pulse'>
+        <h3 className="flex items-center gap-1 rounded-xl bg-emerald-500 text-base text-white px-2 py-0">
+          <FaRegHandPointLeft size={13} />
+          {t('imhere')}
+        </h3>
+      </div>
       
       {isOpen && (
         <div className="fixed inset-0 bg-black/80 z-50 backdrop-blur-sm">
@@ -58,24 +74,23 @@ export default function MobileSidebar() {
                   />
                 </div>
                 <div className="absolute bottom-1 right-1 bg-emerald-500 text-xs text-white px-2 py-1 rounded-full">
-                  Open to work
+                  {t('opentowork')}
                 </div>
               </div>
-              <h1 className="text-xl font-bold mt-2">Jasur Ungarov</h1>
+              <h1 className="text-xl font-bold mt-2">{t('Name')}</h1>
               <div className="bg-[#252525] text-sm px-4 py-1 rounded-full mt-2">
-                Software Engineer
+                {t('softwareengineer')}
               </div>
-              
-              <Link 
-                href="/resume/soon" 
+              <button
+                onClick={handleDownload}
                 className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-md mt-4 text-sm"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                </svg>
-                Download CV
-              </Link>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    <span>{t('downloadresume')}</span>
+              </button>
             </div>
             
             <div className="border-t border-gray-700 my-6"></div>
@@ -86,7 +101,7 @@ export default function MobileSidebar() {
                   <Mail size={16} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Email</p>
+                  <p className="text-xs text-gray-400">{t('email')}</p>
                   <p className="text-sm">jasurungarov17@gmail.com</p>
                 </div>
               </div>
@@ -96,7 +111,7 @@ export default function MobileSidebar() {
                   <Phone size={16} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Phone</p>
+                  <p className="text-xs text-gray-400">{t('contactmephone')}</p>
                   <p className="text-sm">+996 707 067 776</p>
                 </div>
               </div>
@@ -106,8 +121,8 @@ export default function MobileSidebar() {
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Location</p>
-                  <p className="text-sm">Bishkek, KG</p>
+                  <p className="text-xs text-gray-400">{t('location')}</p>
+                  <p className="text-sm">{t('locationvalue')}</p>
                 </div>
               </div>
             </div>
@@ -137,21 +152,21 @@ export default function MobileSidebar() {
                 onClick={() => setIsOpen(false)}
                 className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
               >
-                About
+                {t('about')}
               </Link>
               <Link
                 href="/resume"
                 onClick={() => setIsOpen(false)}
                 className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
               >
-                Resume
+                {t('resume')}
               </Link>
               <Link
                 href="/projects"
                 onClick={() => setIsOpen(false)}
                 className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
               >
-                Projects
+                {t('projects')}
               </Link>
               {/* <Link
                 href="/blog"
@@ -165,9 +180,10 @@ export default function MobileSidebar() {
                 onClick={() => setIsOpen(false)}
                 className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
               >
-                Contact
+                {t('contact')}
               </Link>
             </div>
+            
           </div>
         </div>
       )}
