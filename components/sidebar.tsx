@@ -59,7 +59,6 @@ const Sidebar = () => {
         <div className="bg-primary text-sm px-4 py-1 rounded-full mt-2">
           {t('softwareengineer')}
         </div> 
-
         <button
             onClick={handleDownload}
             disabled={isLoading}
