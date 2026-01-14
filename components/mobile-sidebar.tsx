@@ -40,11 +40,11 @@ export default function MobileSidebar() {
     <div className="md:hidden">
       <button 
         onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-50 bg-[#252525] p-2 rounded-md shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+          className="fixed top-4 left-4 z-50 bg-card p-2 rounded-md ">
             <Menu size={24} />
           </button>
           <div className='fixed top-4 left-16 z-50 p-2 rounded-8xl animate-pulse'>
-        <h3 className="flex items-center gap-1 rounded-xl bg-emerald-500 text-base text-white px-2 py-0">
+        <h3 className="flex items-center gap-1 rounded-xl bg-emerald-900 text-base px-2 py-0">
           <FaRegHandPointLeft size={13} />
           {t('imhere')}
         </h3>
@@ -52,11 +52,11 @@ export default function MobileSidebar() {
       
       {isOpen && (
         <div className="fixed inset-0 bg-black/80 z-50 backdrop-blur-sm">
-          <div className="bg-[#1a1a1a] h-full w-full md:w-[300px] p-6 overflow-y-auto">
+          <div className="bg-card h-full w-full md:w-[300px] p-6 overflow-y-auto">
             <div className="flex justify-end mb-4">
               <button
                 onClick={() => setIsOpen(false)}
-                className="bg-[#252525] p-2 rounded-md"
+                className="bg-popover p-2 rounded-md"
               >
                 <X size={24} />
               </button>
@@ -73,17 +73,17 @@ export default function MobileSidebar() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute bottom-1 right-1 bg-emerald-500 text-xs text-white px-2 py-1 rounded-full">
+                <div className="absolute bottom-1 right-1 bg-emerald-600 text-xs text-white px-2 py-1 rounded-full">
                   {t('opentowork')}
                 </div>
               </div>
               <h1 className="text-xl font-bold mt-2">{t('Name')}</h1>
-              <div className="bg-[#252525] text-sm px-4 py-1 rounded-full mt-2">
+              <div className="bg-primary text-sm px-4 py-1 rounded-full mt-2">
                 {t('softwareengineer')}
               </div>
               <button
                 onClick={handleDownload}
-                className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-md mt-4 text-sm"
+                className="flex items-center gap-2 bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-md mt-4 text-sm"
               >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -97,7 +97,7 @@ export default function MobileSidebar() {
             
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="bg-[#252525] p-2 rounded">
+                <div className="bg-primary p-2 rounded">
                   <Mail size={16} />
                 </div>
                 <div>
@@ -107,7 +107,7 @@ export default function MobileSidebar() {
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="bg-[#252525] p-2 rounded">
+                <div className="bg-primary p-2 rounded">
                   <Phone size={16} />
                 </div>
                 <div>
@@ -117,7 +117,7 @@ export default function MobileSidebar() {
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="bg-[#252525] p-2 rounded">
+                <div className="bg-primary p-2 rounded">
                   <MapPin size={16} />
                 </div>
                 <div>
@@ -130,16 +130,16 @@ export default function MobileSidebar() {
             <div className="border-t border-gray-700 my-6"></div>
             
             <div className="flex justify-center gap-3">
-              <Link href="https://github.com/jasurungarov" className="bg-[#252525] p-2 rounded hover:bg-[#333] transition-all">
+              <Link href="https://github.com/jasurungarov" className="bg-primary p-2 rounded hover:bg-primary/80 transition-all">
                 <Github size={20} />
               </Link>
-              <Link href="https://linkedin.com/jasurungarov" className="bg-[#252525] p-2 rounded hover:bg-[#333] transition-all">
+              <Link href="https://linkedin.com/jasurungarov" className="bg-primary p-2 rounded hover:bg-primary/80 transition-all">
                 <Linkedin size={20} />
               </Link>
-              <Link href="https://t.me/aliabdulwah1d" className="bg-[#252525] p-2 rounded hover:bg-[#333] transition-all">
+              <Link href="https://t.me/aliabdulwah1d" className="bg-primary p-2 rounded hover:bg-primary/80 transition-all">
                 <Send size={20} />
               </Link>
-              <Link href="https://wa.me/996707067776" className="bg-[#252525] p-2 rounded hover:bg-[#333] transition-all">
+              <Link href="https://wa.me/996707067776" className="bg-primary p-2 rounded hover:bg-primary/80 transition-all">
                 <MessageCircle size={20} />
               </Link>
             </div>
@@ -150,21 +150,21 @@ export default function MobileSidebar() {
               <Link
                 href="/"
                 onClick={() => setIsOpen(false)}
-                className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+                className="bg-popover px-4 py-2 rounded-md hover:bg-popover/80 transition-colors"
               >
                 {t('about')}
               </Link>
               <Link
                 href="/resume"
                 onClick={() => setIsOpen(false)}
-                className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+                className="bg-popover px-4 py-2 rounded-md hover:bg-popover/80 transition-colors"
               >
                 {t('resume')}
               </Link>
               <Link
                 href="/projects"
                 onClick={() => setIsOpen(false)}
-                className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+                className="bg-popover px-4 py-2 rounded-md hover:bg-popover/80 transition-colors"
               >
                 {t('projects')}
               </Link>
@@ -178,7 +178,7 @@ export default function MobileSidebar() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-[#252525] px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+                className="bg-popover px-4 py-2 rounded-md hover:bg-popover/80 transition-colors"
               >
                 {t('contact')}
               </Link>

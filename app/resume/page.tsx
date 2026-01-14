@@ -43,7 +43,7 @@ export default function Resume() {
   };
 
   return (
-    <div className="p-6 bg-[#1a1a1a] rounded-2xl">
+    <div className="p-6 rounded-2xl">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <h1 className="text-3xl font-bold">{t('viewresume')}</h1>
@@ -53,7 +53,7 @@ export default function Resume() {
         <div className="hidden md:flex">
           <button
             onClick={handleDownload}
-            className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-4 py-2 rounded-full shadow-[0_0_10px_rgba(0,0,0)]  overflow-hidden"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-full shadow-[0_0_10px_rgba(0,0,0)]  overflow-hidden"
           >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -66,7 +66,7 @@ export default function Resume() {
         <div className="md:hidden">
         <button
             onClick={handleDownload}
-            className="flex items-center gap-2 bg-[#252525] hover:bg-[#333] transition-colors px-2 py-2 text-xs rounded-full shadow-[0_0_10px_rgba(0,0,0)]"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/80 transition-colors px-2 py-2 text-xs rounded-full shadow-[0_0_10px_rgba(0,0,0)]"
           >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -164,7 +164,7 @@ export default function Resume() {
               <h3 className="text-xl font-bold mb-3">{t('programinglanguage')}</h3>
               <div className="flex flex-wrap gap-2">
                 {["JavaScript", "TypeScript", "HTML5", "CSS3", "Python", "Java"].map((skill) => (
-                  <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
+                  <span key={skill} className="bg-primary px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>
                 ))}
@@ -173,7 +173,7 @@ export default function Resume() {
               <h3 className="text-xl font-bold mb-3 mt-6">{t('frameworks')}</h3>
               <div className="flex flex-wrap gap-2">
                 {["React.js", "Next.js", "Node.js", "Tailwind CSS", "Redux", "VeuJs"].map((skill) => (
-                  <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
+                  <span key={skill} className="bg-primary px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>
                 ))}
@@ -184,7 +184,7 @@ export default function Resume() {
               <h3 className="text-xl font-bold mb-3">{t('tools')}</h3>
               <div className="flex flex-wrap gap-2">
                 {["Git", "GitHub", "VS Code", "Android Studio", "Figma", "Vercel", "Netlify"].map((skill) => (
-                  <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
+                  <span key={skill} className="bg-primary px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>
                 ))}
@@ -193,7 +193,7 @@ export default function Resume() {
               <h3 className="text-xl font-bold mb-3 mt-6">{t('databases')}</h3>
               <div className="flex flex-wrap gap-2">
                 {["MongoDB", "MySQL", "Firebase"].map((skill) => (
-                  <span key={skill} className="bg-[#252525] px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
+                  <span key={skill} className="bg-primary px-3 py-1.5 rounded-md text-sm shadow-[0_0_5px_rgba(0,0,0)]">
                     {skill}
                   </span>
                 ))}

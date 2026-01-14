@@ -73,7 +73,7 @@ function Contact() {
     }
 
   return (
-    <div className="p-6 bg-[#1a1a1a] rounded-2xl">
+    <div className="p-6 rounded-2xl">
       <div className="flex items-center gap-3 mb-8">
         <h1 className="text-3xl font-bold">{t('contactme')}</h1>
         <div className="h-1 w-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" />
@@ -84,11 +84,11 @@ function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Contact Info */}
         <div>
-          <div className="bg-[#252525] p-6 rounded-xl mb-6 shadow-[0_0_20px_rgba(0,0,0)]">
+          <div className="bg-card p-6 rounded-xl mb-6 shadow-[0_0_20px_rgba(0,0,0)]">
             <h2 className="text-xl font-bold mb-4">{t('contactmeinfo')}</h2>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="bg-[#333] p-2 rounded-md">
+                <div className="bg-primary p-2 rounded-md">
                   <Send size={18} />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="bg-[#333] p-2 rounded-md">
+                <div className="bg-primary p-2 rounded-md">
                   <MessageCircle size={18} />
                 </div>
                 <div>
@@ -110,25 +110,25 @@ function Contact() {
           </div>
 
           {/* Socials */}
-          <div className="bg-[#252525] p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
+          <div className="bg-card p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
             <h2 className="text-xl font-bold mb-4">{t('contactmesocials')}</h2>
             <div className="grid grid-cols-2 gap-4">
-              <Link href="https://github.com/jasurungarov" className="flex items-center gap-3 bg-[#333] p-3 rounded-lg hover:bg-[#444] transition-colors">
+              <Link href="https://github.com/jasurungarov" className="flex items-center gap-3 bg-popover p-3 rounded-lg hover:bg-popover/80 transition-colors">
                 <GitHub size={20} />
                 <span>GitHub</span>
               </Link>
 
-              <Link href="https://linkedin.com/in/jasurungarov" className="flex items-center gap-3 bg-[#333] p-3 rounded-lg hover:bg-[#444] transition-colors">
+              <Link href="https://linkedin.com/in/jasurungarov" className="flex items-center gap-3 bg-popover p-3 rounded-lg hover:bg-popover/80 transition-colors">
                 <Linkedin size={20} />
                 <span>LinkedIn</span>
               </Link>
 
-              <Link href="https://t.me/aliabdulwah1d" className="flex items-center gap-3 bg-[#333] p-3 rounded-lg hover:bg-[#444] transition-colors">
+              <Link href="https://t.me/aliabdulwah1d" className="flex items-center gap-3 bg-popover p-3 rounded-lg hover:bg-popover/80 transition-colors">
                 <Send size={20} />
                 <span>Telegram</span>
               </Link>
 
-              <Link href="https://wa.me/996707067776" className="flex items-center gap-3 bg-[#333] p-3 rounded-lg hover:bg-[#444] transition-colors">
+              <Link href="https://wa.me/996707067776" className="flex items-center gap-3 bg-primary p-3 rounded-lg hover:bg-primary/80 transition-colors">
                 <MessageCircle size={20} />
                 <span>WhatsApp</span>
               </Link>
@@ -137,7 +137,7 @@ function Contact() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-[#252525] p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
+        <div className="bg-card p-6 rounded-xl shadow-[0_0_20px_rgba(0,0,0)]">
           <h2 className="text-xl font-bold mb-4">{t('sendmessage')}</h2>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div>
@@ -149,7 +149,7 @@ function Contact() {
                 id="name"
                 {...form.register("name")}
                 disabled={isLoading}
-                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
+                className="w-full bg-popover border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
                 placeholder={t('yourname')}
               />
               {form.formState.errors.name && (
@@ -166,7 +166,7 @@ function Contact() {
                 id="email"
                 {...form.register("email")}
                 disabled={isLoading}
-                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
+                className="w-full bg-popover border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all"
                 placeholder={t('youremail')}
               />
               {form.formState.errors.email && (
@@ -183,7 +183,7 @@ function Contact() {
                 rows={5}
                 {...form.register("message")}
                 disabled={isLoading}
-                className="w-full bg-[#333] border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
+                className="w-full bg-popover border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
                 placeholder={t('yourmessage')}
               />
               {form.formState.errors.message && (

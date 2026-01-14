@@ -62,7 +62,7 @@ export default function RootLayout({
               <MobileSidebar />
               <div className="pb-[80px] flex-1 md:ml-[300px] p-4">
                 <Navbar />
-                <main className="mt-4 rounded-2xl shadow-[0_0_50px_rgba(255,0,0,0.3)]">{children}
+                <main className="mt-4 rounded-2xl bg-card">{children}
                 </main>
                 <Toaster richColors  position="top-center" />
                 <Footer/>

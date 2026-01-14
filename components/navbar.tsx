@@ -44,14 +44,14 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center">
-      <div className="hidden md:flex bg-[#1a1a1a] rounded-full p-1.5 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+      <div className="hidden bg-card md:flex rounded-full p-1.5">
         {navItems.map((item) => (
           <Link
             key={item.path}
             href={item.path}
             className={`px-4 py-2 rounded-full text-sm ${
               pathname === item.path
-                ? "bg-[#252525] text-white shadow-[0_0_10px_rgba(0,0,0)]"
+                ? "bg-popover shadow-[0_0_10px_rgba(0,0,0)]"
                 : "text-gray-400 hover:text-white transition-colors"
             }`}
           >
@@ -71,17 +71,17 @@ const Navbar = () => {
         </button> */}
 
       <div className="relative group">
-        <button className="bg-[#1a1a1a] p-2 rounded-lg flex items-center gap-1 shadow-[0_0_5px_rgba(255,0,0,0.3)]">
+        <button className="bg-card p-2 rounded-lg flex items-center gap-1">
           <Globe size={18} />
           <span className="text-sm">{language.toUpperCase()}</span>
         </button>
 
-        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#1a1a1a] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-popover rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}
-              className={`w-full px-4 py-2 text-left text-sm hover:bg-[#252525] transition-colors ${
+              className={`w-full px-4 py-2 text-left text-sm hover:bg-primary transition-colors ${
                 language === lang.code ? "text-white" : "text-gray-400"
               }`}
             >
