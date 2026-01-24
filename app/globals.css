@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Legacy RGB (Next default) === */
+:root {
+  --foreground-rgb: 230, 241, 235;
+  --background-start-rgb: 10, 20, 16;
+  --background-end-rgb: 10, 20, 16;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 230, 241, 235;
+    --background-start-rgb: 10, 20, 16;
+    --background-end-rgb: 10, 20, 16;
+  }
+}
+
+/* === SHADCN / TAILWIND THEME === */
+@layer base {
+  :root {
+    --background: 155 45% 6%;
+    --foreground: 150 30% 92%;
+
+    --card: 155 35% 10%;
+    --card-foreground: 150 30% 92%;
+
+    --popover: 155 28% 23%;
+    --popover-foreground: 150 30% 92%;
+
+    --primary: 155 45% 18%;
+    --primary-foreground: 150 30% 96%;
+
+    --secondary: 155 30% 25%;
+    --secondary-foreground: 150 30% 96%;
+
+    --muted: 155 20% 22%;
+    --muted-foreground: 150 15% 65%;
+
+    /* GOLD ACCENT */
+    --accent: 45 60% 55%;
+    --accent-foreground: 155 40% 10%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 155 25% 20%;
+    --input: 155 25% 20%;
+    --ring: 155 45% 35%;
+
+    /* Charts */
+    --chart-1: 155 45% 35%;
+    --chart-2: 45 60% 55%;
+    --chart-3: 170 45% 40%;
+    --chart-4: 200 55% 45%;
+    --chart-5: 0 70% 55%;
+
+    --radius: 0.75rem;
+
+  }
+
+  /* Dark mode (chuqurroq variant) */
+  .dark {
+    --background: 155 50% 4%;
+    --foreground: 150 30% 92%;
+
+    --card: 155 50% 6%;
+    --popover: 155 50% 8%;
+
+    --primary: 155 50% 12%;
+  }
+}
+
+/* === BASE STYLES === */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* === Scrollbar hidden === */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* === Gradient Text (Green → Gold Premium) === */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    hsl(155 45% 35%),
+    hsl(45 60% 55%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
