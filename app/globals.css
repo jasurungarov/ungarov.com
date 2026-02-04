@@ -62,13 +62,19 @@
 
   /* Dark mode (chuqurroq variant) */
   .dark {
-    --background: 155 50% 4%;
-    --foreground: 150 30% 92%;
+    --background: 222 47% 7%;        /* App eng past layer */
+    --foreground: 210 40% 98%;
 
-    --card: 155 50% 6%;
-    --popover: 155 50% 8%;
+    --card: 222 40% 11%;             /* Backgrounddan ko‘tarilgan */
+    --card-foreground: 210 40% 98%;
 
-    --primary: 155 50% 12%;
+    --popover: 222 35% 14%;          /* Modal / dropdown */
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 221 83% 53%;          /* Zamonaviy ko‘k accent */
+    --primary-foreground: 210 40% 98%;
+
+		
   }
 }
 
